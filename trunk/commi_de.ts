@@ -213,6 +213,107 @@
         <source>Sending file via %1...</source>
         <translation>Sende Datei mittels %1...</translation>
     </message>
+    <message>
+        <source>Save terminal content as</source>
+        <translation>Speicher Terminal-Inhalt als</translation>
+    </message>
+    <message>
+        <source>Save &amp;as</source>
+        <translation>Speichern &amp;unter</translation>
+    </message>
+    <message>
+        <source>Receive File</source>
+        <translation>Empfange Datei</translation>
+    </message>
+    <message>
+        <source>&amp;Receive File</source>
+        <translation>&amp;Empfange Datei</translation>
+    </message>
+    <message>
+        <source>Ctrl+R</source>
+        <translation>Ctrl+R</translation>
+    </message>
+    <message>
+        <source>Overwrite File?</source>
+        <translation>Überschreibe Datei?</translation>
+    </message>
+    <message>
+        <source>A file called %1 already exists.Do you want to overwrite it?</source>
+        <translation>Eine Datei mit dem Name %1 existiert bereits.
+Wollen Sie sie überschreiben !?</translation>
+    </message>
+    <message>
+        <source>&amp;Yes</source>
+        <translation>&amp;Ja</translation>
+    </message>
+    <message>
+        <source>&amp;No</source>
+        <translation>&amp;Nein</translation>
+    </message>
+    <message>
+        <source>I/O Error</source>
+        <translation>I/O-Fehler</translation>
+    </message>
+    <message>
+        <source>Can&apos;t open %1 for writing</source>
+        <translation>Kann %1 nicht zum Schreiben öffnen</translation>
+    </message>
+    <message>
+        <source>Terminal content saved to %1 ...</source>
+        <translation>Terminal-Inhalt gespeichert unter %1 ...</translation>
+    </message>
+    <message>
+        <source>Could not start rb</source>
+        <translation>Kann rb nicht starten</translation>
+    </message>
+    <message>
+        <source>Receiving file via %1...</source>
+        <translation>Empfange Datei mittels %1...</translation>
+    </message>
+    <message>
+        <source>Aborted by user</source>
+        <translation>Durch den Benutzer abgebrochen</translation>
+    </message>
+    <message>
+        <source>Transer complete</source>
+        <translation>Transfer abgeschlossen</translation>
+    </message>
+    <message>
+        <source>File %1 receiced complete</source>
+        <translation>Datei %1 wurde empfangen</translation>
+    </message>
+    <message>
+        <source>Transfer complete</source>
+        <translation>Transfer komplett</translation>
+    </message>
+    <message>
+        <source>Transfer error</source>
+        <translation>Fehler beim Transfer </translation>
+    </message>
+    <message>
+        <source>Error while transfer file
+Exit Status : %1</source>
+        <translation>Fehler während es Transfers
+Exit Status: %1</translation>
+    </message>
+    <message>
+        <source>BPS: %1  -  ETA : %2:%3
+File: %4</source>
+        <translation>BPS: %1 - ETA: %2:%3
+File: %4</translation>
+    </message>
+    <message>
+        <source>Received %1 blocks</source>
+        <translation>Empfange Block %1</translation>
+    </message>
+    <message>
+        <source>Receiving File</source>
+        <translation>Empfange Datei</translation>
+    </message>
+    <message>
+        <source>Stop while TIMEOUT</source>
+        <translation>Beendet durch TIMEOUT</translation>
+    </message>
 </context>
 <context>
     <name>aboutForm</name>
@@ -533,6 +634,26 @@ http://cutecom.sf.net
         <source>Alt+C</source>
         <translation>Alt+B</translation>
     </message>
+    <message>
+        <source>Auto-Receive zmodem transfers</source>
+        <translation>Automatisches Empfangen von zmodem-Transfers</translation>
+    </message>
+    <message>
+        <source>Directory for received files:</source>
+        <translation>Vrezeichnis für empfangene Dateien:</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <source>enable</source>
+        <translation>Aktivieren</translation>
+    </message>
+    <message>
+        <source>Choose a directory for storing received files</source>
+        <translation>Wählen Sie ein Verzeichnis für die empfangenen Dateien</translation>
+    </message>
 </context>
 <context>
     <name>transferForm</name>
@@ -587,6 +708,60 @@ http://cutecom.sf.net
     <message>
         <source>Transfer File...</source>
         <translation>Sende Datei...</translation>
+    </message>
+    <message>
+        <source>Receive file</source>
+        <translation>Empfange Datei</translation>
+    </message>
+    <message>
+        <source>All Files (*.*)</source>
+        <translation>Alle Dateien (*.*)</translation>
+    </message>
+    <message>
+        <source>save file dialog</source>
+        <translation>Speichern Dialog</translation>
+    </message>
+    <message>
+        <source>Choose a file</source>
+        <translation>Wählen Sie eine Datei</translation>
+    </message>
+    <message>
+        <source>Choose a directory for storing received files</source>
+        <translation>Wählen Sie ein Verzeichnis um die empfangenen Dateien zu speichern</translation>
+    </message>
+    <message>
+        <source>open file dialog</source>
+        <translation>Datei-Öffnen-Dialog</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Fehler</translation>
+    </message>
+    <message>
+        <source>Directory does not exist or is not writable !!</source>
+        <translation>Das Verzeichnis existiert nicht
+oder ist nicht schreibbar !!</translation>
+    </message>
+    <message>
+        <source>Overwrite File?</source>
+        <translation>Datei überschreiben?</translation>
+    </message>
+    <message>
+        <source>A file called %1 already exists.Do you want to overwrite it?</source>
+        <translation>Eine Datei mit dem Namen %1 existiert bereits.
+Wollen Sie sie überschreiben?</translation>
+    </message>
+    <message>
+        <source>&amp;Yes</source>
+        <translation>&amp;Ja</translation>
+    </message>
+    <message>
+        <source>&amp;No</source>
+        <translation>&amp;Nein</translation>
+    </message>
+    <message>
+        <source>Can&apos;t open %1</source>
+        <translation>Kann %1 nicht öffnen</translation>
     </message>
 </context>
 </TS>

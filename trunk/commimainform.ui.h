@@ -19,6 +19,7 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <iostream>
+#define debug_receive
 using std::cerr; using std::endl;
 
 void millisleep(int ms)
@@ -138,6 +139,8 @@ void CommiMainForm::saveSettings() {
     settings.writeEntry("/commi/Height",height());
     settings.writeEntry("/commi/Top",x());
     settings.writeEntry("/commi/Left",y());
+    settings.writeEntry("/commi/AutoReceiveZModem",opt_autoreceive);
+    settings.writeEntry("/commi/AutoReceiveDirectory",opt_autoreceivedir);
 }
 
 void CommiMainForm::readSettings() {
@@ -151,6 +154,8 @@ void CommiMainForm::readSettings() {
     y = (settings.readNumEntry("/commi/Left",50));
     w = (settings.readNumEntry("/commi/Width",550));
     h = (settings.readNumEntry("/commi/Height",450));
+    opt_autoreceive = settings.readBoolEntry("/commi/AutoReceiveZModem",true);
+    opt_autoreceivedir = settings.readEntry("/commi/AutoReceiveDirectory","");
     resize(w,h);
     move (x,y);
     // Device
@@ -180,7 +185,8 @@ void CommiMainForm::fileExit()
 
 void CommiMainForm::editCopy()
 {
-    clipboard->setText ( textBrowser->text());
+//    clipboard->setText ( textBrowser->text());
+    textBrowser->copy();
 }
 
 
@@ -206,6 +212,7 @@ void CommiMainForm::init()
     readSettings();
     m_sending=false;
     helpContentsAction->setAccel( QKeySequence( tr("F1")));
+    lineEdit->setFocus();
 }
 
 
@@ -419,6 +426,7 @@ void CommiMainForm::connectionOpen()
       connectionOpenAction->setEnabled(false);
       connectionCloseAction->setEnabled(true);
       transferSend_FileAction->setEnabled(true);
+      transferReceive_FileAction->setEnabled(true);
     }
 }
 
@@ -493,9 +501,14 @@ void CommiMainForm::readData( int fd )
  }
  c++;
     } 
-    textBrowser->setCursorPosition(textBrowser->paragraphs()-1, textBrowser->paragraphLength(textBrowser->paragraphs()-1));
-    
+//    cerr << text.latin1() << endl;
+    if(text.startsWith("rz**") && !text.endsWith("\n") && opt_autoreceive) {
+ receiveFileSZ(opt_autoreceivedir,2);
+    }
+    else {
+ textBrowser->setCursorPosition(textBrowser->paragraphs()-1, textBrowser->paragraphLength(textBrowser->paragraphs()-1));  
     textBrowser->insert(text);
+   }
 }
 
 bool CommiMainForm::sendString(const QString& s)
@@ -546,6 +559,7 @@ void CommiMainForm::connectionClose()
     connectionOpenAction->setEnabled(true);
     connectionCloseAction->setEnabled(false);
     transferSend_FileAction->setEnabled(false);
+    transferReceive_FileAction->setEnabled(false);
     closeTTY(true);
 }
 
@@ -555,6 +569,8 @@ void CommiMainForm::editOptions()
     optionsForm *optForm = new optionsForm(this, "options", TRUE );
     // general settings
     optForm->fontBtn->setFont(textBrowser->font());
+    optForm->autosaveCB->setChecked(opt_autoreceive);
+    optForm->autosaveLEdit->setText(opt_autoreceivedir);
     // old port settings
     optForm->deviceNameComboBox->setCurrentText(opt_devicename);
     optForm->writeCheckBox->setChecked(opt_write);
@@ -573,6 +589,8 @@ void CommiMainForm::editOptions()
     if ( optForm->exec() ) {
  // general
  textBrowser->setFont(optForm->fontBtn->font());
+ opt_autoreceive = optForm->autosaveCB->isChecked();
+ opt_autoreceivedir = optForm->autosaveLEdit->text();
  // port
  opt_devicename = optForm->deviceNameComboBox->currentText();
  opt_write = optForm->writeCheckBox->isChecked();
@@ -719,7 +737,7 @@ void CommiMainForm::readFromStdout()
       int bytesWritten=::write(m_fd, src, (bytesToWrite>4096?4096:bytesToWrite));
       if (bytesWritten<0)
       {
-//         cerr<<"readFromStdout() error "<<bytesWritten<<" , "<<bytesToWrite<<" left"<<endl;
+  //       cerr<<"readFromStdout() error "<<bytesWritten<<" , "<<bytesToWrite<<" left"<<endl;
          return;
       }
       src+=bytesWritten;
@@ -735,6 +753,7 @@ void CommiMainForm::readFromStderr()
    if (m_progress==0)
       return;
    QString s(ba);
+  // cerr << "text : " << s << endl;   
    QRegExp regex(".+\\d+/ *(\\d+)k.*");
    int pos=regex.search(s);
    if (pos>-1)
@@ -772,14 +791,11 @@ void CommiMainForm::transferSend_FileAction_activated()
    // closeTTY(false);
    transferForm *transForm = new transferForm(this, "transfer", true);
    if(!transForm->exec()) return; // break if fails
-   if(transForm->protocolCB->currentText()=="plain") {
+   if(transForm->protocolCB->currentItem()==3) {
      sendPlainFile(transForm->fileNameLEdit->text());
    }
-   else if(transForm->protocolCB->currentText()=="xmodem" || transForm->protocolCB->currentText()=="ymodem" || transForm->protocolCB->currentText()=="zmodem") {
-       int mode = 0;
-       if(transForm->protocolCB->currentText()=="ymodem") mode = 1;
-       else if(transForm->protocolCB->currentText()=="ymodem") mode = 2;
-       sendFileSZ(transForm->fileNameLEdit->text(),mode);
+   else if(transForm->protocolCB->currentItem()>-1 && transForm->protocolCB->currentItem()<3) {
+       sendFileSZ(transForm->fileNameLEdit->text(),transForm->protocolCB->currentItem());
    }
 }
 
@@ -806,4 +822,209 @@ void CommiMainForm::helpContents_activated()
 {
      helpForm *hForm = new helpForm(this, "help", true);
      hForm->exec();
+}
+
+
+void CommiMainForm::fileSave_asAction_activated()
+{
+    QString fn = QFileDialog::getSaveFileName( QString::null, "*", this );
+    QFile f ( fn);
+    if(f.exists() && QMessageBox::question(
+            this,
+            tr("Overwrite File?"),
+            tr("A file called %1 already exists."
+                "Do you want to overwrite it?")
+                .arg( fn ),
+            tr("&Yes"), tr("&No"),
+            QString::null, 0, 1 ) )
+        return;
+    if(!f.open(IO_WriteOnly )) {
+ QMessageBox::critical(this,tr("I/O Error"),tr("Can't open %1 for writing").arg(fn));
+return;
+    }
+    QTextStream t(&f);
+    t << textBrowser->text();
+    f.close();
+    statusBar()->message(tr("Terminal content saved to %1 ...").arg(fn), 4000);
+}
+
+void CommiMainForm::receiveFileSZ( QString filename, int mode) {
+    m_sending = true;
+    closeTTY(false);
+    m_sz=new QProcess(this);
+    m_sz->addArgument("sh");
+    m_sz->addArgument("-c");
+    QString tmp=QString("export LANG=C && rb ");
+    switch(mode) {
+    case 0 : 
+ tmp+="--xmodem " + filename;
+ break;
+case 1:
+    tmp+="--ymodem ";
+    break;
+case 2:
+    tmp+="--zmodem ";
+}
+    if(mode==1 || mode==2) {   
+ QDir dir(filename);
+  m_sz->setWorkingDirectory(dir);
+    }
+//    tmp=tmp+"-vv \""+filename+"\" < "+opt_devicename+" > "+opt_devicename;
+   tmp=tmp+" < "+opt_devicename+" > "+opt_devicename;
+    m_sz->addArgument(tmp);
+    m_sz->setCommunication(QProcess::Stderr);//|QProcess::Stdout);
+
+    connect(m_sz, SIGNAL(readyReadStderr()), this, SLOT(readFromStderrReceive()));
+      connect(m_sz, SIGNAL(readyReadStdout()), this, SLOT(readFromStderrReceive()));
+    connect(m_sz, SIGNAL(processExited()), this, SLOT(sendDone()));
+      if (!m_sz->start())
+      {
+         QMessageBox::information(this, tr("Comm error"), tr("Could not start rb"));
+         delete m_sz;
+         m_sz=0;
+         openTTY(false);
+         m_sending=false;
+         return;
+      }
+      switch (mode) {
+   case 0: tmp="xmodem";
+       break;
+   case 1:
+       tmp="ymodem";
+       break;
+       case 2:
+    tmp="zmodem";
+}
+    receiveblock=0;
+    receivemode = mode;
+      m_progress=new QProgressDialog(tr("Receiving file via %1...").arg(tmp), tr("Cancel"), 11, this, "progress", TRUE);
+      connect(m_progress, SIGNAL(cancelled()), this, SLOT(killSz()));
+      m_progress->setMinimumDuration(100);
+      QFileInfo fi(filename);
+      m_progressStepSize=10;
+//      if (m_progressStepSize<1)
+//         m_progressStepSize=1;
+//    cerr<<"while(isRunning)"<<endl;
+      m_progress->setProgress(0);
+      while (m_sz->isRunning())
+      {
+         qApp->processEvents();
+       //  millisleep(10);
+      }
+//      cerr<<"----------------- sx done"<<endl;
+
+     openTTY(false);
+    m_sending=false;
+/*
+  Exit Status
+  
+  -128   Abort transfer
+  -128   Timeout 
+  */
+    if(!m_sz->normalExit()) { 
+ QMessageBox::critical(this,tr("Error"),tr("Aborted by user"));
+    }
+    else {
+    if(m_sz->exitStatus()==0) {
+ switch(mode) {
+ case 0:    QMessageBox::information(this,tr("Transer complete"),tr("File %1 receiced complete").arg(filename));
+     break;
+ case 1:
+ case 2:
+     QMessageBox::information(this,tr("Transfer complete"),tr("File %1 receiced complete").arg(receivefilename));
+ }
+    }
+    else QMessageBox::information(this,tr("Transfer error"), tr("Error while transfer file\nExit Status : %1").arg(m_sz->exitStatus()));
+}
+      delete m_sz;
+      m_sz=0;
+      delete m_progress;
+      m_progress=0;
+    
+
+    
+}
+
+void CommiMainForm::readFromStderrReceive()
+{
+   QByteArray ba=m_sz->readStderr();
+   if (m_progress==0)
+      return;
+   QString s(ba);
+   s = s.stripWhiteSpace();
+   s = s.latin1();
+//   textBrowser->append("text:"+s+"\n");
+   //ba = m_sz->readStdout();
+    QRegExp regex("[a-z]: (\\d+)"); // Blocks received
+   QRegExp regex4("[a-z]: -(\\d+)"); // mistake
+   QRegExp regex2("[a-z]: +(\\d+)/ +(\\d+) +BPS:(\\d+) +ETA (\\d+):(\\d+)"); // zmodem
+   QRegExp regex3("[a-z]: +(\\d+)/ +(\\d+) +BPS:(\\d+)"); // ymodem
+   QRegExp regex5("[a-z]: +(\\d+) +BPS:(\\d+)"); // xmodem
+   int pos2 = regex2.search(s);
+   int pos3 = regex3.search(s);
+   int pos=regex.search(s);
+   int pos4 = regex4.search(s);
+   int pos5 = regex5.search(s);
+   QString t;
+
+   if(pos2>-1) {
+     m_progress->setLabelText(tr("BPS: %1  -  ETA : %2:%3\nFile: %4").arg(regex2.cap(3),regex2.cap(4),regex2.cap(5), receivefilename));
+       t = regex2.cap(2);
+       m_progress->setTotalSteps(t.toInt());
+       t = regex2.cap(1);
+       m_progress->setProgress(t.toInt());
+//       textBrowser->append("pos2\n");   
+   }
+   else if (pos3>-1) {
+       t = regex3.cap(2);
+//       QMessageBox::information(this,"Received File",tr("Bytes %1\nFilename: %2").arg(t,receivefilename));
+   }
+   else if(pos4>-1) {
+     // do nothing ... is a mistake from rb-system  
+   }
+   else if(pos5>-1) {
+       t = regex5.cap(1);
+//       textBrowser->append("received "+t+"Bytes\n");
+   }
+   else if (pos>-1)
+   {
+       do {
+    receiveblock++;
+    pos += regex.matchedLength();
+       }
+       while((pos=regex.search(s,pos)) != -1);
+       m_progress->setLabelText(tr("Received %1 blocks").arg(receiveblock));
+       if(m_progress->progress()<10) m_progress->setProgress(m_progress->progress()+1);
+       else m_progress->setProgress(0);
+//    textBrowser->append("pos1\n");
+   }
+   else if(s.contains("TIMEOUT")) 
+   {
+       killSz(); // kill it when timeout
+       QMessageBox::critical(this,tr("Receiving File"),tr("Stop while TIMEOUT"));
+//       textBrowser->append("timeout\n");   
+   }
+   else if(s.contains(":")) {
+      receivefilename=s.mid(s.find(":")+2);
+//      textBrowser->append("filename\n");   
+   }
+   else {
+//      textBrowser->append("else\n");        
+   }
+  textBrowser->setCursorPosition(textBrowser->paragraphs()-1, textBrowser->paragraphLength(textBrowser->paragraphs()-1)); 
+   
+
+}
+
+void CommiMainForm::transferReceive()
+{       
+    transferForm *transForm = new transferForm(this, "transfer", true);
+    transForm->setReceive();
+   if(!transForm->exec()) return; // break if fails
+   if(transForm->protocolCB->currentItem()==3) {
+     cerr << "receive plain" << endl;
+   }
+   else {
+      receiveFileSZ( transForm->fileNameLEdit->text(),transForm->protocolCB->currentItem());
+   }
 }

@@ -222,6 +222,12 @@
         <receiver>transferForm</receiver>
         <slot>validate()</slot>
     </connection>
+    <connection>
+        <sender>protocolCB</sender>
+        <signal>activated(const QString&amp;)</signal>
+        <receiver>transferForm</receiver>
+        <slot>protocolCB_activated(const QString&amp;)</slot>
+    </connection>
 </connections>
 <includes>
     <include location="local" impldecl="in implementation">qfiledialog.h</include>
@@ -231,12 +237,23 @@
     <include location="local" impldecl="in implementation">qmessagebox.h</include>
     <include location="local" impldecl="in implementation">qstring.h</include>
     <include location="local" impldecl="in implementation">unistd.h</include>
+    <include location="local" impldecl="in implementation">qdir.h</include>
+    <include location="local" impldecl="in implementation">qfileinfo.h</include>
     <include location="local" impldecl="in implementation">transferform.ui.h</include>
 </includes>
+<variables>
+    <variable>bool receive;</variable>
+    <variable>bool directory;</variable>
+</variables>
 <slots>
+    <slot>setReceive()</slot>
     <slot>fileChoose()</slot>
     <slot>validate()</slot>
+    <slot>protocolCB_activated( const QString &amp; )</slot>
 </slots>
+<functions>
+    <function access="private" specifier="non virtual">init()</function>
+</functions>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

@@ -27,3 +27,14 @@ void optionsForm::fontBtn_clicked()
 {
 fontBtn->setFont( QFontDialog::getFont( 0, fontBtn->font() ) );
 }
+
+
+void optionsForm::pushButton7_clicked()
+{
+autosaveLEdit->setText(QFileDialog::getExistingDirectory(
+                    "",
+                    this,
+                    "get existing directory",
+                    tr("Choose a directory for storing received files"),
+                    false ));
+}
