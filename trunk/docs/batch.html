@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <title>Batch-files</title>
+</head>
+<body>
+<strong>Batch-files</strong><br><br>
+You can run simple batchfiles with Commi, you can write them in your favorite editor.<br>
+<a href="#syntax">Syntax</a><br><a href="#example">Example</a>
+<p><strong><a name="syntax">Syntax</a></strong></p>
+<p>A command is prefixed with !!xxxxx, all other lines are send to the port.</p>
+<p><u>!!openPort</u><br>This opens the port you choosed before or in your last session.</p>
+<p><u>!!closePort</u><br>This closes the port.</p>
+<p><u>!!sleep x</u><br>This command let the batch-performing wait for x ms, where x is for a choosen number of milliseconds</p>
+<p><u>!!send modem filename</u><br>You can upload a file with a given protocol.<br>Filename is the filename and the path to it.<br>
+The modem option let you choose the protocol. Available are plain, xmodem, ymodem, zmodem</p>
+<p><strong><a name="example">Example</a></strong></p>
+<p>This file communicate with an evaluation board with redboot on it. It first display the help, dump a memory area and the upload a file throught ymodem and at last it execute it (go).</p>
+<pre>
+!!openPort
+help
+!!sleep 1000
+dump -b 0x2000000
+!!sleep 800
+load -m ymodem
+!!sleep 500
+!!send ymodem ~/redboot.img
+!!sleep 500
+go
+</pre>
+  </body>
+</html>

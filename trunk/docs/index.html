@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <title>Commi</title>
+</head>
+<body>
+<p><strong>The Commi Handbook</strong></p>
+<p><strong>Content</strong>
+<ul><LI><a href="#intro">Introduction</a></LI>
+<li><a href="#using">Using Commi</a></li>
+<li><a href="#transfer">Transfer a file</a></li>
+<li><a href="#batch">Perform a batchfile</a></li>
+<li><a href="#options">Options</a></li>
+</ul>
+</p>
+<p><strong><a name="intro">Introduction</a></strong></p>
+<p>Commi is a line orientated serial terminal like minicom.<br>
+The main window looks like <br>
+<img src="commimain.gif" border="0">
+</p>
+<p><strong><a name="using">Using Commi</a></strong></p>
+<p>
+Using it is very simple, you must first setup your serial port under the <a href="#options">Edit->Options</a>.<br>
+Then open the port Connection->Open (F3). Commi will try to open the port you setuped. If it fails check the permissions of the choosen device (can you read and/or write it).<br>
+When it is setuped correctly you can type your text in the line at the bottom.<br>
+This line has a history function which is used by the up and down arrow.</p>
+<p><strong><a name="transfer">Transfer a file</a></strong></p>
+<p>
+If you want to transfer a file go to Transfer->Send File (Ctrl+S). A little window will open...<br>
+<img src="commitransfer.png" border="0"><br>
+Choose your file you want to upload trought the '...'-Button and your prefered transfer-protocol.<br>Click Ok and your file will be send.<br>If you choose x-,y- or zmodem as your protocol you must have installed the sz-tools.
+</p>
+<p><strong><a name="batch">Perform a batchfile</a></strong></p>
+<p>
+To perform a batchfile simply do File->Open batchfile... (Ctrl+O).<br>
+How to write your own batchfiles can you read here : <a href="batch.html">Syntax of the batchfiles</a>
+</p>
+<p><strong><a name="options">Options</a></strong></p>
+<p>
+Will do this later :(
+<img src="commioptions.png" border="0">
+</p>
+</body>
+</html>

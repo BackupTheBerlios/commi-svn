@@ -1,0 +1,242 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>transferForm</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>transferForm</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>353</width>
+            <height>147</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Transfer File</string>
+    </property>
+    <property name="modal">
+        <bool>true</bool>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="resizeMode">
+            <enum>Fixed</enum>
+        </property>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout17</cstring>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout8</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel1</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Filename:</string>
+                            </property>
+                        </widget>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>layout4</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLineEdit">
+                                    <property name="name">
+                                        <cstring>fileNameLEdit</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QPushButton">
+                                    <property name="name">
+                                        <cstring>fileChooserBtn</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>...</string>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout14</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>layout13</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Protocol:</string>
+                                    </property>
+                                </widget>
+                                <spacer>
+                                    <property name="name">
+                                        <cstring>spacer3</cstring>
+                                    </property>
+                                    <property name="orientation">
+                                        <enum>Horizontal</enum>
+                                    </property>
+                                    <property name="sizeType">
+                                        <enum>Expanding</enum>
+                                    </property>
+                                    <property name="sizeHint">
+                                        <size>
+                                            <width>16</width>
+                                            <height>20</height>
+                                        </size>
+                                    </property>
+                                </spacer>
+                            </hbox>
+                        </widget>
+                        <widget class="QComboBox">
+                            <item>
+                                <property name="text">
+                                    <string>xmodem</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>ymodem</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>zmodem</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>plain</string>
+                                </property>
+                            </item>
+                            <property name="name">
+                                <cstring>protocolCB</cstring>
+                            </property>
+                            <property name="minimumSize">
+                                <size>
+                                    <width>110</width>
+                                    <height>0</height>
+                                </size>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout16</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer4</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>40</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget class="QPushButton">
+                            <property name="name">
+                                <cstring>okButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;Ok</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+O</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton">
+                            <property name="name">
+                                <cstring>cancelButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;Cancel</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+C</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </vbox>
+        </widget>
+    </vbox>
+</widget>
+<connections>
+    <connection>
+        <sender>cancelButton</sender>
+        <signal>clicked()</signal>
+        <receiver>transferForm</receiver>
+        <slot>reject()</slot>
+    </connection>
+    <connection>
+        <sender>fileChooserBtn</sender>
+        <signal>clicked()</signal>
+        <receiver>transferForm</receiver>
+        <slot>fileChoose()</slot>
+    </connection>
+    <connection>
+        <sender>okButton</sender>
+        <signal>clicked()</signal>
+        <receiver>transferForm</receiver>
+        <slot>validate()</slot>
+    </connection>
+</connections>
+<includes>
+    <include location="local" impldecl="in implementation">qfiledialog.h</include>
+    <include location="local" impldecl="in implementation">sys/types.h</include>
+    <include location="local" impldecl="in implementation">sys/stat.h</include>
+    <include location="local" impldecl="in implementation">fcntl.h</include>
+    <include location="local" impldecl="in implementation">qmessagebox.h</include>
+    <include location="local" impldecl="in implementation">qstring.h</include>
+    <include location="local" impldecl="in implementation">unistd.h</include>
+    <include location="local" impldecl="in implementation">transferform.ui.h</include>
+</includes>
+<slots>
+    <slot>fileChoose()</slot>
+    <slot>validate()</slot>
+</slots>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

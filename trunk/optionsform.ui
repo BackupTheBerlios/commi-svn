@@ -1,0 +1,727 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>optionsForm</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>optionsForm</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>596</width>
+            <height>450</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Options</string>
+    </property>
+    <property name="modal">
+        <bool>true</bool>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="resizeMode">
+            <enum>Fixed</enum>
+        </property>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout6</cstring>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout5</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QIconView">
+                            <item>
+                                <property name="text">
+                                    <string>General</string>
+                                </property>
+                                <property name="pixmap">
+                                    <pixmap>image0</pixmap>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Connection</string>
+                                </property>
+                                <property name="pixmap">
+                                    <pixmap>image1</pixmap>
+                                </property>
+                            </item>
+                            <property name="name">
+                                <cstring>iconView1</cstring>
+                            </property>
+                            <property name="gridX">
+                                <number>130</number>
+                            </property>
+                            <property name="gridY">
+                                <number>60</number>
+                            </property>
+                            <property name="maxItemWidth">
+                                <number>128</number>
+                            </property>
+                            <property name="autoArrange">
+                                <bool>true</bool>
+                            </property>
+                            <property name="itemsMovable">
+                                <bool>false</bool>
+                            </property>
+                            <property name="wordWrapIconText">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget class="QWidgetStack">
+                            <property name="name">
+                                <cstring>widgetStack1</cstring>
+                            </property>
+                            <property name="minimumSize">
+                                <size>
+                                    <width>430</width>
+                                    <height>340</height>
+                                </size>
+                            </property>
+                            <widget class="QWidget">
+                                <property name="name">
+                                    <cstring>generalPage</cstring>
+                                </property>
+                                <attribute name="id">
+                                    <number>0</number>
+                                </attribute>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel10</cstring>
+                                    </property>
+                                    <property name="geometry">
+                                        <rect>
+                                            <x>10</x>
+                                            <y>10</y>
+                                            <width>270</width>
+                                            <height>22</height>
+                                        </rect>
+                                    </property>
+                                    <property name="text">
+                                        <string>General Settings</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel1_2</cstring>
+                                    </property>
+                                    <property name="geometry">
+                                        <rect>
+                                            <x>10</x>
+                                            <y>50</y>
+                                            <width>134</width>
+                                            <height>22</height>
+                                        </rect>
+                                    </property>
+                                    <property name="text">
+                                        <string>Terminal-Font:</string>
+                                    </property>
+                                </widget>
+                                <widget class="QPushButton">
+                                    <property name="name">
+                                        <cstring>fontBtn</cstring>
+                                    </property>
+                                    <property name="geometry">
+                                        <rect>
+                                            <x>160</x>
+                                            <y>40</y>
+                                            <width>153</width>
+                                            <height>35</height>
+                                        </rect>
+                                    </property>
+                                    <property name="text">
+                                        <string>Preview</string>
+                                    </property>
+                                </widget>
+                            </widget>
+                            <widget class="QWidget">
+                                <property name="name">
+                                    <cstring>connectionPage</cstring>
+                                </property>
+                                <attribute name="id">
+                                    <number>1</number>
+                                </attribute>
+                                <vbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLayoutWidget">
+                                        <property name="name">
+                                            <cstring>layout3</cstring>
+                                        </property>
+                                        <vbox>
+                                            <property name="name">
+                                                <cstring>unnamed</cstring>
+                                            </property>
+                                            <widget class="QGroupBox">
+                                                <property name="name">
+                                                    <cstring>groupBox1</cstring>
+                                                </property>
+                                                <property name="title">
+                                                    <string>Serial port settings</string>
+                                                </property>
+                                                <widget class="QLabel">
+                                                    <property name="name">
+                                                        <cstring>textLabel1</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>20</x>
+                                                            <y>40</y>
+                                                            <width>94</width>
+                                                            <height>22</height>
+                                                        </rect>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>Device</string>
+                                                    </property>
+                                                    <property name="buddy" stdset="0">
+                                                        <cstring>deviceNameComboBox</cstring>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QLabel">
+                                                    <property name="name">
+                                                        <cstring>textLabel6</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>20</x>
+                                                            <y>240</y>
+                                                            <width>120</width>
+                                                            <height>22</height>
+                                                        </rect>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>Flow Control</string>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QLabel">
+                                                    <property name="name">
+                                                        <cstring>textLabel5</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>20</x>
+                                                            <y>200</y>
+                                                            <width>94</width>
+                                                            <height>22</height>
+                                                        </rect>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>Parity</string>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QLabel">
+                                                    <property name="name">
+                                                        <cstring>textLabel4</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>20</x>
+                                                            <y>160</y>
+                                                            <width>95</width>
+                                                            <height>22</height>
+                                                        </rect>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>Stop Bits</string>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QLabel">
+                                                    <property name="name">
+                                                        <cstring>textLabel3</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>20</x>
+                                                            <y>120</y>
+                                                            <width>94</width>
+                                                            <height>22</height>
+                                                        </rect>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>Data bits</string>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QLabel">
+                                                    <property name="name">
+                                                        <cstring>textLabel2</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>20</x>
+                                                            <y>80</y>
+                                                            <width>94</width>
+                                                            <height>22</height>
+                                                        </rect>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>Baudrate</string>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QCheckBox">
+                                                    <property name="name">
+                                                        <cstring>writeCheckBox</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>320</x>
+                                                            <y>280</y>
+                                                            <width>70</width>
+                                                            <height>27</height>
+                                                        </rect>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>write</string>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QCheckBox">
+                                                    <property name="name">
+                                                        <cstring>readCheckBox</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>240</x>
+                                                            <y>280</y>
+                                                            <width>70</width>
+                                                            <height>27</height>
+                                                        </rect>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>read</string>
+                                                    </property>
+                                                    <property name="checked">
+                                                        <bool>true</bool>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QCheckBox">
+                                                    <property name="name">
+                                                        <cstring>applyCheckBox</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>20</x>
+                                                            <y>320</y>
+                                                            <width>320</width>
+                                                            <height>27</height>
+                                                        </rect>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>Apply setting when open device</string>
+                                                    </property>
+                                                    <property name="checked">
+                                                        <bool>true</bool>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QComboBox">
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>/dev/ttyS0</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>/dev/ttyS1</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>/dev/ttyS2</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>/dev/ttyS3</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>/dev/ttyS4</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>/dev/ttyS5</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>/dev/ttyS6</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>/dev/ttyS7</string>
+                                                        </property>
+                                                    </item>
+                                                    <property name="name">
+                                                        <cstring>deviceNameComboBox</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>236</x>
+                                                            <y>30</y>
+                                                            <width>160</width>
+                                                            <height>35</height>
+                                                        </rect>
+                                                    </property>
+                                                    <property name="editable">
+                                                        <bool>true</bool>
+                                                    </property>
+                                                    <property name="currentItem">
+                                                        <number>0</number>
+                                                    </property>
+                                                    <property name="duplicatesEnabled">
+                                                        <bool>false</bool>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QLabel">
+                                                    <property name="name">
+                                                        <cstring>textLabel7</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>20</x>
+                                                            <y>280</y>
+                                                            <width>200</width>
+                                                            <height>22</height>
+                                                        </rect>
+                                                    </property>
+                                                    <property name="text">
+                                                        <string>open device for:</string>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QComboBox">
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>1</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>2</string>
+                                                        </property>
+                                                    </item>
+                                                    <property name="name">
+                                                        <cstring>stopbitsComboBox</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>236</x>
+                                                            <y>150</y>
+                                                            <width>160</width>
+                                                            <height>30</height>
+                                                        </rect>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QComboBox">
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>None</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>Odd</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>Even</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>Mark</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>Space</string>
+                                                        </property>
+                                                    </item>
+                                                    <property name="name">
+                                                        <cstring>parityComboBox</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>236</x>
+                                                            <y>190</y>
+                                                            <width>160</width>
+                                                            <height>35</height>
+                                                        </rect>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QComboBox">
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>5</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>6</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>7</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>8</string>
+                                                        </property>
+                                                    </item>
+                                                    <property name="name">
+                                                        <cstring>databitsComboBox</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>236</x>
+                                                            <y>110</y>
+                                                            <width>160</width>
+                                                            <height>35</height>
+                                                        </rect>
+                                                    </property>
+                                                    <property name="currentItem">
+                                                        <number>3</number>
+                                                    </property>
+                                                    <property name="duplicatesEnabled">
+                                                        <bool>false</bool>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QComboBox">
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>600</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>1200</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>2400</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>4800</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>9600</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>19200</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>38400</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>57600</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>115200</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>230400</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>460800</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>576000</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>921600</string>
+                                                        </property>
+                                                    </item>
+                                                    <property name="name">
+                                                        <cstring>baudrateComboBox</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>236</x>
+                                                            <y>70</y>
+                                                            <width>160</width>
+                                                            <height>35</height>
+                                                        </rect>
+                                                    </property>
+                                                    <property name="currentItem">
+                                                        <number>6</number>
+                                                    </property>
+                                                    <property name="duplicatesEnabled">
+                                                        <bool>false</bool>
+                                                    </property>
+                                                </widget>
+                                                <widget class="QComboBox">
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>Hardware</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>Software</string>
+                                                        </property>
+                                                    </item>
+                                                    <item>
+                                                        <property name="text">
+                                                            <string>None</string>
+                                                        </property>
+                                                    </item>
+                                                    <property name="name">
+                                                        <cstring>flowcontrolComboBox</cstring>
+                                                    </property>
+                                                    <property name="geometry">
+                                                        <rect>
+                                                            <x>236</x>
+                                                            <y>230</y>
+                                                            <width>160</width>
+                                                            <height>35</height>
+                                                        </rect>
+                                                    </property>
+                                                    <property name="currentItem">
+                                                        <number>2</number>
+                                                    </property>
+                                                </widget>
+                                            </widget>
+                                        </vbox>
+                                    </widget>
+                                </vbox>
+                            </widget>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout2</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer1</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>191</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget class="QPushButton">
+                            <property name="name">
+                                <cstring>okButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;Ok</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+O</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton">
+                            <property name="name">
+                                <cstring>cancelButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;Cancel</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+C</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </vbox>
+        </widget>
+    </vbox>
+</widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="1324">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000004f3494441542891ed963f885d451487bf5d67e18c3c612e047c1753e4490a9f28b88b8259108c6261825aac5a44ac2c45108d0193d5268a853691808dda8869442dd434ca92c64da511143785704583f7a22b33e8e21c74742de6defbde13a3f10fb1719ae1bc3777ce39dffcce9981ffc77f3ce600c6bbc7571eb8ffc0d3a39da3db15c5e108847f36a780330e358a2028790e29fcb8766aedc489574e1c05bec50ddc15c78f1d3fbb7d11c70f5fffb0fde8438fbe0d5cca9e1bf73cb2fde3c5749fc7fbebef6f0f87c3bbcc68c7e87216f279c46f22a73f3a4d4c91ab775e4d4c116b2c3e790a53fc7d5b3da1098c768d185d3b0260bc738c885c6902e1974e10cd66c3cabd2b2cdfb8ccdebd7bb15822110c90a030053ef9bf66e3292878ea85a7b8e5a65b78e9e59700081a00b6e79d71bd22a34696af59e6e8e1a38cc74b78f5e89612428004f5560d09744b2fdc56a8b566e5b6158a41d1fb7292fd1a4ddaff68c5e2468ef1754b2c5d06cb37ef61fdd41a1b6736a89a0a6b2c405633a1ffee4f6d2344224bbb96e02760a127c0bc5c26337529084f3fb3ca3b6fada141d97fc77e0e3e769095db57f0c1133552879cd905db9b35baa528994cac2382b404a2ce445a7d59d1d40d1b9f6d10fc01f6ddb38fc25adcae21c14fb29acef04fed05f0de33de35c66f658d78cdb371d6cd7e782eb0f2f87d3c78ff03b000f17b78f5c4ebac9f5ac307ffb785189a40b559510c0afca6a790ac0713d254a4063c9ebd37ede3c3b39f72f2cd3738f9ee1a61b3c9844468528318419322a63debd6d97949183873f60c8b372cf6997bf5582ca6536377fe16cbdd77de4addd4003897ff2f4c8ed88943518632242485a468c8c1f894378d29ce90089bb98a30799f5aeb0981e92a407264cdb9a6d744931a9c386aa979f1f957195d35c21ac127a5348ed5675639f9da1b2039019f3c00955699c056e8e9083221d06ac18899aa82949d76b8bb2034299284270e1fa41c94787c7fc168c89909791d806a56bbeae42202f2856404553d3f814e0b98d92030506fd6d44d9d37696fb76e5da7094d9a6d55642093205a3f5dfd7bcda4663590042b1631821bb81912851439935670a52909847ef382a27782d23b4726443a0d55a13a4f15c86f32979ca13536dfebdd710968d27cdfb719a32da994ff8f294e4874b311c256c0922f2831c2fc3401148632448c20834ca3941211c18943442807ad3d702064bb5d8fb43d5e725bc7645b8cf4c13b71a013a2f3dd99f499991cb135f9283abb23134dccf8246f124dccce0d33eb30932044b266acb1b92ada3e20fc0e814e70ceb899cdca418935b6775e4ad913b0c6ce9010230c65381344e7474c2ec54e03f3335560e885a6cc66dedb02623319675d4f488d6667ad76663463e89d8714fa20004c21c55ce7df1acb734f3e471d6a8a417ed114923b5a21455f6a9dd03a61a14cdaab99084cbf576441083137a372542249881ab1ce8261ced4a1ce05f21350c0f26dcbf4f602c4989f5551dbe7d5969f55b586beb98ccd98a08145b3d8ffeeb5bdc0dade5f6d5638e38829a2aa3fcfaf9f5e7fafdea853f72e9c764ecc5450fa200a297aad4c1398b6a7674b0eda92bf2f0725e58e92ea6cf55df579f5c91cc0e2f58b0f1f3974e4d0d2354b43af7eae30c5b6d7d94cbb7a0e9adffbddbbbf279026449cb8c93a0dd3fd604e55b7ab8fabaf569f5d3dde34cdb1b9a9bc9730ec16239790d8c63039f37f6fcc01a8ea17c00780fef1f2ffc74518bf02c40dee0fcb3494100000000049454e44ae426082</data>
+    </image>
+    <image name="image1">
+        <data format="PNG" length="1020">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000003c34944415418958dd541681c551cc7f16f64026f20c21bc961170aee400e26f6b01b7bd0b58724a5076302499b1e5a5a9c287b68da4043f5144b11042f965e4c2ed54c354d3d249848ad3dad89e8ae874a32d0760d189c80e2e4b0b8032ecc830eac87b7d9dd260de6c130c39be133bff9bfffcc50abd500f8eccbbf57a76f3cd9e080313d5570ae4e16ae1c741ee0490ee78f1c7d002f68f49f9430e91306dfeebdf8ea64a16f7ab2e0cb8470139de2e6c4c5bc7b100ab8514c0ac000882095e894047f565e9e9e2a48a5545a08e1a998eb52882bd99336dd472d2a5558bd57722672df317b6b68bc054d9b1a05833580b65aadc6cc571589a17caa4a06db01c4a0aa8acc319bec491b2140298d4431acde2bb1feab7f7b6e7e68fc498e14b0814052c57bd525d328c5e5775e0a83ad6034f8abc2c06816805367330c8edac80e0d0a43ef4d03fa877be84ddbcec485cf5d1396cd2ea4f50a2874da060c106cf9880ef861b9c8e07037dd694b172a0601a85d3c06138d9fee5c702249da9e84e031003fee83558c176c850c9eb4c91cb31a09315ad0c6aa80f9cbc724e2557a2e42b40542c16b2e2bfb60292da7f75882ecf124664bd24619e2961678bc40b4760dfb0c20413d021537cbd080277279690971fddc851e687f3699d8bb2f97881e5c26390c6697ae51b8092109b90f066e0ebc9594a6093c6d396b80aa2755007144e5d69b585d21d6d1faa482c41b208c9d74e12c6ee10cb209c7516aa0cfd6423db1f99cc495f9b74185d001d1a6de28839982ec38880e1c60353f823476d394b6a1275587db218a5a921afac0ec3e4d645854ca15824d1fcadba8183267c13c02bd39587749ab005fe78975f7fb3b607702a64e1cc53aa9d26f14e2f82564df252c4bdfb438fb29d2fb00b3b3beb83158090883668dbd8d873e510c7eb999765f77081ae8cc6c91cacf37b0ea0b48154a0fc07f4808f41b0073f363532a5e92b4e30cbc6e1356c1944d3c8a356a9aade80219638764b786fd9f60e737420cfa4face035faf8eed763e3df2f166f2f2caf0350a9eaf9a85ee356b4b8e67b9978ce4b1ed1686915fc473ae98915bcdd65698cbb8be7c7610914ce7bb95ea2b80912c18c5ba4b81678a7f8f0230bb56c7781ff10767e6f26ddb59e81353e360e77f8c250cea55c56f7750cef5fbf4fb01d7a0afa936cbbf208941e3f1f85fa67b3adad6dafcfb9334b4ef6b8edbe7ba1976b9fdc27d8569e42f55fe5bc544ff1e58b10fefbece31f0ad6f81d47760a372c2b4f41ff378be7c3fc082ee0103f3fe9a1e07af23e85f2eaa814e0d7fbfa401480dd9fe961467e04273f44253f42faffaefd0f8f3b9df71525c8f60000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>iconView1</sender>
+        <signal>selectionChanged(QIconViewItem*)</signal>
+        <receiver>optionsForm</receiver>
+        <slot>iconView1_selectionChanged(QIconViewItem*)</slot>
+    </connection>
+    <connection>
+        <sender>cancelButton</sender>
+        <signal>clicked()</signal>
+        <receiver>optionsForm</receiver>
+        <slot>reject()</slot>
+    </connection>
+    <connection>
+        <sender>okButton</sender>
+        <signal>clicked()</signal>
+        <receiver>optionsForm</receiver>
+        <slot>okButton_clicked()</slot>
+    </connection>
+    <connection>
+        <sender>fontBtn</sender>
+        <signal>clicked()</signal>
+        <receiver>optionsForm</receiver>
+        <slot>fontBtn_clicked()</slot>
+    </connection>
+</connections>
+<includes>
+    <include location="local" impldecl="in implementation">qfontdialog.h</include>
+    <include location="local" impldecl="in implementation">qfont.h</include>
+    <include location="local" impldecl="in implementation">optionsform.ui.h</include>
+</includes>
+<slots>
+    <slot>iconView1_selectionChanged( QIconViewItem * item )</slot>
+    <slot>okButton_clicked()</slot>
+    <slot>fontBtn_clicked()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
